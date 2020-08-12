@@ -28,69 +28,16 @@ public class LongestCommonPrefix {
         System.out.println(longestCommonPrefix(a));
     }
 
-    public static String longestCommonPrefix(String[] strs) {
-        if (isValidArray(strs)) {
-            if(strs.length == 1)
-                return strs[0];
-            String re = getSmallestString(strs);
-            List<String> b = removeSmallString(strs, re);
-            char[] ch = re.toCharArray();
-            Boolean status = false;
-            String a = "";
-            for (int i = 0; i < ch.length; i++) {
-                a = a + ch[i];
-                for (int j = 0; j < b.size(); j++) {
-                    if (!b.get(j).contains(a))
-                        status = true;
-                    else
-                        status = false;
-                }
-                if (status)
-                    break;
+        public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+        for (int i = 0; i < strs[0].length() ; i++){
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < strs.length; j ++) {
+                if (i == strs[j].length() || strs[j].charAt(i) != c)
+                    return strs[0].substring(0, i);
             }
-
-            if(a.length() ==1 && re.length() ==1 && !status)
-                return a;
-            else
-                return a.substring(0, a.length() - 1);
-        } else
-            return "";
-    }
-
-    private static Boolean isValidArray(String[] strs) {
-        Boolean status = false;
-        Matcher matcher;
-        String dateRegex = "^[a-z]+$";
-        Pattern pattern = Pattern.compile(dateRegex);
-        for (int j = 0; j < strs.length; j++) {
-            matcher = pattern.matcher(strs[j]);
-            if (matcher.matches())
-                status = true;
-            else
-                status = false;
-            break;
         }
-        System.out.println(status);
-        return status;
-    }
-
-    private static List<String> removeSmallString(String[] strs, String a) {
-        List<String> b = new ArrayList<>();
-        for (int j = 0; j < strs.length; j++) {
-            if (!a.equalsIgnoreCase(strs[j]))
-                b.add(strs[j]);
-        }
-        return b;
-    }
-
-    private static String getSmallestString(String[] strs) {
-        String a = strs[0];
-        for (int i = 1; i < strs.length; i++) {
-            if (strs[i].length() < a.length())
-                a = strs[i];
-        }
-
-        return a;
+        return strs[0];
     }
 
 }
