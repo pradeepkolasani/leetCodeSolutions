@@ -45,22 +45,23 @@ All values of indices are unique (i.e. indices is a permutation of the integers 
 
 public class ShuffleString {
     public static void main(String[] args) {
-        int[] b = {4,5,6,7,0,2,1,3};
-        System.out.println(restoreString("codeleet" ,b));
+        int[] b = {4, 5, 6, 7, 0, 2, 1, 3};
+        System.out.println(restoreString("codeleet", b));
     }
 
     public static String restoreString(String s, int[] indices) {
         char[] array = s.toCharArray();
         char[] n = new char[s.length()];
         String req = "";
-        for(int i = 0; i < array.length; i++){
-            for(int j=0; j <= 0; j++){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j <= 0; j++) {
                 int ca = indices[i];
                 n[ca] = array[i];
             }
         }
-        for(int j = 0; j< n.length;j++){
+        for (int j = 0; j < n.length; j++) {
             req = req + n[j];
         }
         return req;
     }
+}

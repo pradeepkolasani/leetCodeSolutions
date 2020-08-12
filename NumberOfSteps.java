@@ -18,7 +18,7 @@ public class NumberOfSteps {
     public static void main(String[] args) {        
         System.out.println(numberOfSteps(14));
     }
- public int numberOfSteps (int num) {
+ public static int numberOfSteps (int num) {
         int count = 0;
         while(num != 0){
             count = count +1;
